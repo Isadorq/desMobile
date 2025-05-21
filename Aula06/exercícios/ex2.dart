@@ -1,32 +1,30 @@
-// Crie duas subclasses concretas de máquina industrial Prensa e Robô solda.
-// Prensa deve ter um atributo adicional chamado “Pressão em toneladas” e os métodos ligar
-// e desligar devem exibir mensagens adequadas.
-// Robô solda deve ter um atributo chamado tipo de solda(String) para especificar o tipo de
-// solda que realiza. Os métodos ligar e desligar devem exibir mensagens adequadas.
+/*
+Exemplo 2 polimorfismo
 
-class MaquinaIndustrial {
-  String nome;
-  int potencia;
-  bool status;
+10.03.2025
+*/
 
-  MaquinaIndustrial(this.nome, this.potencia, this.status);
+class Forma{
 
-  void ligar(){
-    print("Produto ligado!");
+  void desenhar(){
+    print("Desenho generico");
   }
-  void desligar(){
-    print("Produto desligado!");
-  }
-
 }
 
-class Prensa extends MaquinaIndustrial{
-  int pressao;
-
-  Prensa(String nome, int potencia, bool status, this.pressao): super(nome, potencia, status);
-
-  void ligar(){
-    int setpoint =100;
-    if 
+class Circulo extends Forma{
+  @override 
+  void desenhar(){
+    print("Desenhando um circulo");
   }
+
+  void desenharForma(Forma forma){
+    forma.desenhar();
+
+  }
+}
+
+void main(){
+  // instancio minha figura circulo
+  Circulo figura = Circulo();
+  figura.desenharForma(Circulo());
 }

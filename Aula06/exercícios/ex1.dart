@@ -1,53 +1,38 @@
-// Crie uma classe abstrata “Máquina industrial” com os seguintes métodos:
-// Nome – Nome da máquina
-// Potência da máquina
-// Status – booleano
-// Métodos abstratos
-// Ligar() – Um método abstrato que define como a máquina é ligada
-// Desligar () – Método abstrato que define como a máquina é desligada
+/*
+Exemplo polimorfismo
 
-abstract class MaquinaIndustrial {
-  String nome;
-  int potencia;
-  bool status;
+10.03.2025
 
-  MaquinaIndustrial(this.nome, this.potencia, this.status);
+*/
+// Classe pai
+class Animal{
 
-  void ligar();
-  void desligar();
-
-  void verificarStatus(int setpoint) {
-    if (status && potencia >= setpoint) {
-      print("A $nome está ligada!");
-    } 
-    else {
-      print("A $nome está desligada.");
-    }
+  void fazerSom(){
+    print("O animal faz um som");
   }
 }
 
-class Filha extends MaquinaIndustrial {
-  Filha(String nome, int potencia, bool status) : super(nome, potencia, status);
+// Cria a classe filha
+
+class Cachorro extends Animal{
+  // polimorfismo
 
   @override
-  void ligar() {
-    status = true;
-    print("A máquina $nome foi ligada!");
-    verificarStatus(1000);
-  }
-
-  @override
-  void desligar() {
-    status = false;
-    print("A máquina $nome foi desligada!");
-    verificarStatus(1000);
+  void fazerSom() {
+   print("O cachorro late: Au au ");
   }
 }
 
-void main() {
-  Filha maquina1 = Filha("Máquina de Solda", 1500, false);
-  maquina1.ligar();
+class Gato extends Animal{
+  @override 
+  void fazerSom(){
+    print("O Gato mia");
+  }
+}
 
-  Filha maquina2 = Filha("Máquina de Torno", 900, false);
-  maquina2.desligar();
+void main(){
+  Animal meuanimal = Cachorro();
+  meuanimal.fazerSom();
+  Animal meuanimal1 = Gato();
+  meuanimal1.fazerSom();
 }
